@@ -8,6 +8,7 @@
     flex-wrap: wrap;
     padding: 5px;
     margin: 20px;
+    background: #E7E7E7;
 
     &__img {
         width: 100%;
@@ -16,17 +17,24 @@
     }
     &__title {
         display: flex;
-        justify-content: space-between;
+        
+        align-items: center;
         width: 100%;
+        font-size: 1.1rem;
+        &__text {
+            margin-right: auto;
+        }
     }
     &__list {
         display: flex;
         flex-direction: column;
         margin: 5px;
         width: 45%;
+        font-size: 0.8rem;
     }
     &__desc {
         margin: 5px;
         width: 45%;
+        font-size: 0.8rem;
     }
 }

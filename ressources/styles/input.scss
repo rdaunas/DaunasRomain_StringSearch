@@ -1,0 +1,26 @@
+.searchbar {    
+    height: 60px;    
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    &__input {  
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;      
+        width: 90%;        
+        border: none;
+        height: 100%;
+        background-color: #E7E7E7;
+    }
+    &__button {
+        border: none;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        font-size: 2rem;
+        height: 62px;
+        background-color: #E7E7E7;
+        cursor: pointer;
+    }
+}
