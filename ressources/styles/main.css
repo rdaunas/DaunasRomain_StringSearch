@@ -53,6 +53,13 @@
   margin-bottom: 20px;
 }
 
+.tag {
+  width: 107px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
 .searchbar {
   height: 60px;
   width: 80%;
@@ -75,9 +82,13 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   font-size: 2rem;
-  height: 62px;
   background-color: #E7E7E7;
   cursor: pointer;
+}
+
+.filter {
+  color: white;
+  background-color: blue;
 }
 
 p {
