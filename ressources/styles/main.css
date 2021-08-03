@@ -87,10 +87,12 @@
 }
 
 .filter {
+  position: relative;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   overflow: hidden;
+  height: 50px;
 }
 .filter-section {
   display: flex;
@@ -112,10 +114,9 @@
 }
 
 .dropdown {
-  display: flex;
+  display: none;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 400px;
   padding: 5px;
 }
 .dropdown__text {
