@@ -19,8 +19,6 @@ function filterDrop(element) {
         //element.querySelector(".dropdown").style.height = "50px";
 
     }
-    
-
 }
 
 appareil.addEventListener( "click", () => {filterDrop(appareil)});
