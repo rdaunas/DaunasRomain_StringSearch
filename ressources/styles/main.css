@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   padding: 5px;
   margin: 20px;
+  margin-left: 0px;
   background: #E7E7E7;
 }
 .card__img {
@@ -62,7 +63,6 @@
 
 .searchbar {
   height: 60px;
-  width: 80%;
   margin: auto;
   margin-bottom: 20px;
   display: flex;
@@ -90,8 +90,8 @@
   position: relative;
   padding: 10px;
   margin: 10px;
+  margin-left: 0px;
   border-radius: 5px;
-  overflow: hidden;
   height: 50px;
 }
 .filter-section {
@@ -114,10 +114,17 @@
 }
 
 .dropdown {
+  border-radius: 5px;
+  background-color: inherit;
   display: none;
   flex-direction: column;
   flex-wrap: wrap;
   padding: 5px;
+  position: absolute;
+  top: 45px;
+  left: 0px;
+  width: 100%;
+  z-index: 8;
 }
 .dropdown__text {
   margin: 5px;
@@ -125,6 +132,10 @@
 
 p {
   margin: 0;
+}
+
+body {
+  padding: 100px;
 }
 
 /*# sourceMappingURL=main.css.map */
