@@ -4,8 +4,9 @@ let allRecipes;
 let FilteredRecipes;
 
 for(recette of recipes){
-    let ingredients;
+    let ingredients = "";
     for(let i of recette.ingredients){
+        //console.log(i);
         let content =`<p>${i.ingredient}: `;
         if(i.quantity != undefined){content += i.quantity}
         if(i.unit != undefined){content += i.unit}
