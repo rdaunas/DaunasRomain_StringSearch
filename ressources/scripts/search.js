@@ -12,7 +12,6 @@ function stringSearch(s , recipeArray) {
             });
         return recipe.name.toLowerCase().indexOf(s.toLowerCase()) !== -1 || recipe.description.toLowerCase().indexOf(s.toLowerCase()) !== -1 ||  ingredientMatch; 
     });
-    console.log(result);
     return result;
 }
 

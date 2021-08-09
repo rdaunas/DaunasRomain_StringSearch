@@ -28,26 +28,25 @@ ustensiles.addEventListener( "click", () => {filterDrop(ustensiles)});
 let ingredientData = [];
 let appareilData = [];
 let ustensilData = [];
-
+let listData = [];
 //FILTER DATA HANDLING
 function populateFilter(recipeList, ingredientFilter, appareilFilter, ustensilesFilter) {
 
     ingredientFilter.innerHTML = "";
     appareilFilter.innerHTML = "";
     ustensilesFilter.innerHTML = "";
-
+    ingredientData = [];
+    appareilData = [];
+    ustensilData = [];
+    listData = recipeList;
     
     for( recipe of recipeList) {
         
         for( i of recipe.ingredients){
-            
-            //ingredientData.push(i.ingredient);
             noDuplicate(ingredientData, i.ingredient);
          }         
-       //appareilData.push(recipe.appliance);
          noDuplicate(appareilData, recipe.appliance);
         for( ustensil of recipe.ustensils){
-           //ustensilData.push(ustensil);
             noDuplicate(ustensilData,ustensil);
         }
     }
@@ -59,7 +58,7 @@ function populateFilter(recipeList, ingredientFilter, appareilFilter, ustensiles
 function generateFilterHtml(array, element) {
     let htmlText ="";
     for(item of array){
-        htmlText += `<p class="dropdown__item">${item}</p>`;
+        htmlText += `<p class="dropdown__item" onclick=itemToBadge(this)>${item}</p>`;
     }
     element.innerHTML = htmlText;
 }
@@ -81,14 +80,18 @@ ingredientInput.addEventListener("change", e => {
 
     let filtered = ingredientData.filter( i => i.includes(e.target.value));
     generateFilterHtml(filtered, document.querySelector("#dropdownBlue"));
+    
 })
 appareilInput.addEventListener("change", e => {
 
     let filtered = appareilData.filter( i => i.includes(e.target.value));
     generateFilterHtml(filtered, document.querySelector("#dropdownGreen"));
+    
 })
 ustensilInput.addEventListener("change", e => {
 
     let filtered = ustensilData.filter( i => i.includes(e.target.value));
     generateFilterHtml(filtered, document.querySelector("#dropdownOrange"));
+    
 })
+

@@ -15,7 +15,6 @@ populateFilter(allRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
 searchInput.addEventListener("change", (event) => {
 
     if( event.target.value.length >= 3) {
-        console.log(event.target.value);
         filteredRecipes = stringSearch(event.target.value , allRecipes);
         renderRecipe(filteredRecipes);
         populateFilter(filteredRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
@@ -55,4 +54,41 @@ function renderRecipe(listRecette) {
         </div>` )
     }   
 }
+function itemToBadge(element) {
+    let color;
+    color = element.closest(".filter").className.split("--")[1];
+    document.querySelector(".badgeContainer").insertAdjacentHTML("beforeend",`<span class="badge tag tag--${color}"><p class="badge__text">${element.innerHTML}</p><i class="far fa-times-circle badgeButton" onclick="deleteBadge(this)"></i></span>`);
+    secondaryFilter(element.innerHTML);
+}
+//TODO APPLY FILTER AND REMOVE IT
+function secondaryFilter(filter) {
+    filteredRecipes = filteredRecipes.filter( recipe => {
+       let ingredientMatch = false;
+        recipe.ingredients.forEach( i => {
+            if(i.ingredient.indexOf(filter) !== -1) {
+                ingredientMatch = true;
+            }
+        });
+        return recipe.ustensils.indexOf(filter) !== -1 || recipe.appliance == filter || ingredientMatch;
+    })
+    renderRecipe(filteredRecipes);
+}
+function deleteFilter() {
+    let appliedFilter= [];
+    let array = [];
+    for(filter of document.querySelectorAll(".badge__text")) {
+        appliedFilter.push(filter.innerHTML);
+    };
+    for(filter of appliedFilter) {
+        console.log(filter);
+        array.push.apply(array,stringSearch(filter,allRecipes));
+    }
+    console.log(array);
+    renderRecipe(array);
+    
 
+}
+function deleteBadge(element) {
+    element.closest(".badge").remove();
+    deleteFilter();
+}
