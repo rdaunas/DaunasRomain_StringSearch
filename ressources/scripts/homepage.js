@@ -1,23 +1,33 @@
 const gallery = document.querySelector(".gallery");
 const searchInput = document.querySelector(".searchbar__input");
+const ingredientFilter = document.querySelector("#dropdownBlue");
+const ustensilesFilter = document.querySelector("#dropdownOrange");
+const appareilFilter = document.querySelector("#dropdownGreen");
 
 let allRecipes = recipes;
 let filteredRecipes= [];
 
 renderRecipe(allRecipes);
+populateFilter(allRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
 
+
+//SEARCH EVENT HANDLING
 searchInput.addEventListener("change", (event) => {
 
     if( event.target.value.length >= 3) {
         console.log(event.target.value);
         filteredRecipes = stringSearch(event.target.value , allRecipes);
         renderRecipe(filteredRecipes);
+        populateFilter(filteredRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
     }
     else {
         renderRecipe(allRecipes);
+        populateFilter(allRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
     }
 })
 
+
+//RENDER RECIPE CARD
 function renderRecipe(listRecette) {
 
     gallery.innerHTML = "";
@@ -45,3 +55,4 @@ function renderRecipe(listRecette) {
         </div>` )
     }   
 }
+

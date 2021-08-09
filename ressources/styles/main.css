@@ -141,6 +141,7 @@
   top: 45px;
   left: 0px;
   width: 100%;
+  max-height: 400px;
   z-index: 8;
 }
 .dropdown__text {
@@ -153,6 +154,10 @@ p {
 
 body {
   padding: 100px;
+}
+
+::placeholder {
+  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */
