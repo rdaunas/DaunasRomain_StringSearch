@@ -71,7 +71,7 @@ function secondaryFilter(filter) {
             }
         });
         let lowerCaseUstensils = recipe.ustensils.map(u => u.toLowerCase());
-        return lowerCaseUstensils.indexOf(filter.toLowerCase()) !== -1 || recipe.appliance.toLowerCase().toLowerCase() == filter || ingredientMatch;
+        return lowerCaseUstensils.indexOf(filter.toLowerCase()) !== -1 || recipe.appliance.toLowerCase() == filter.toLowerCase() || ingredientMatch;
     })
     renderRecipe(filteredRecipes);
     populateFilter(filteredRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
@@ -79,23 +79,22 @@ function secondaryFilter(filter) {
 function deleteFilter() {
     let appliedFilter= [];
     let array = [];
+
     for(filter of document.querySelectorAll(".badge__text")) {
         appliedFilter.push(filter.innerHTML);
-    };
-    for(filter of appliedFilter) {
-        console.log(filter);
-        array.push.apply(array,stringSearch(filter,allRecipes));
     }
-    if(array = []) {
+    for(filter of appliedFilter) {
+        array.push.apply(array,filterSearch(filter, allRecipes));
+    }
+    if(array.length == 0) {
         filteredRecipes = stringSearch(searchInput.value , allRecipes);
         renderRecipe(filteredRecipes);
+        populateFilter(filteredRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
     }
-    else {
-        renderRecipe(array);
+    else { 
+        renderRecipe(array);        
+        populateFilter(array, ingredientFilter, appareilFilter, ustensilesFilter);
     }
-    
-    
-
 }
 function deleteBadge(element) {
     element.closest(".badge").remove();
