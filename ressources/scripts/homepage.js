@@ -37,7 +37,7 @@ function renderRecipe(listRecette) {
             //console.log(i);
             let content =`<p>${i.ingredient}: `;
             if(i.quantity != undefined){content += i.quantity}
-            if(i.unit != undefined){content += i.unit}
+            if(i.unit != undefined){content += " "+i.unit}
             content += "</p>";
             ingredients += content;
         }
@@ -45,7 +45,7 @@ function renderRecipe(listRecette) {
         <div class="card">
             <div class="card__img" ></div>
             <div class="card__title">
-                <h6 class="card__title__text">${recette.name}</h6><i class="far fa-clock"></i><p>${recette.time} min</p>
+                <h6 class="card__title__text">${recette.name}</h6><i class="far fa-clock card__title__icon"></i><p>${recette.time} min</p>
             </div>            
             <div class="card__list">
                 ${ingredients}

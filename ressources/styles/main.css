@@ -21,9 +21,15 @@
   align-items: center;
   width: 100%;
   font-size: 1.1rem;
+  height: 32px;
 }
 .card__title__text {
   margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.card__title__icon {
+  margin-right: 5px;
 }
 .card__list {
   display: flex;
