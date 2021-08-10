@@ -92,6 +92,7 @@ function deleteFilter() {
         populateFilter(filteredRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
     }
     else { 
+        filteredRecipes = array;
         renderRecipe(array);        
         populateFilter(array, ingredientFilter, appareilFilter, ustensilesFilter);
     }
