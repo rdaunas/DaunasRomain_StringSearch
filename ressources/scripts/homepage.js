@@ -5,7 +5,7 @@ const ustensilesFilter = document.querySelector("#dropdownOrange");
 const appareilFilter = document.querySelector("#dropdownGreen");
 
 let allRecipes = recipes;
-let filteredRecipes= [];
+let filteredRecipes= recipes;
 
 renderRecipe(allRecipes);
 populateFilter(allRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
@@ -65,11 +65,12 @@ function secondaryFilter(filter) {
     filteredRecipes = filteredRecipes.filter( recipe => {
        let ingredientMatch = false;
         recipe.ingredients.forEach( i => {
-            if(i.ingredient.indexOf(filter) !== -1) {
+            if(i.ingredient.toLowerCase().indexOf(filter.toLowerCase()) !== -1) {
                 ingredientMatch = true;
             }
         });
-        return recipe.ustensils.indexOf(filter) !== -1 || recipe.appliance == filter || ingredientMatch;
+        let lowerCaseUstensils = recipe.ustensils.map(u => u.toLowerCase());
+        return lowerCaseUstensils.indexOf(filter.toLowerCase()) !== -1 || recipe.appliance.toLowerCase().toLowerCase() == filter || ingredientMatch;
     })
     renderRecipe(filteredRecipes);
 }
@@ -83,8 +84,14 @@ function deleteFilter() {
         console.log(filter);
         array.push.apply(array,stringSearch(filter,allRecipes));
     }
-    console.log(array);
-    renderRecipe(array);
+    if(array = []) {
+        filteredRecipes = stringSearch(searchInput.value , allRecipes);
+        renderRecipe(filteredRecipes);
+    }
+    else {
+        renderRecipe(array);
+    }
+    
     
 
 }

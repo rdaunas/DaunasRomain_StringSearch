@@ -75,22 +75,22 @@ const appareilInput = document.querySelector("#appareilInput");
 const ustensilInput = document.querySelector("#ustensilInput");
 
 
-//TODO ADD CASE HANDLING
+
 ingredientInput.addEventListener("change", e => {
 
-    let filtered = ingredientData.filter( i => i.includes(e.target.value));
+    let filtered = ingredientData.filter( i => i.toLowerCase().includes(e.target.value.toLowerCase()));
     generateFilterHtml(filtered, document.querySelector("#dropdownBlue"));
     
 })
 appareilInput.addEventListener("change", e => {
 
-    let filtered = appareilData.filter( i => i.includes(e.target.value));
+    let filtered = appareilData.filter( i => i.toLowerCase().includes(e.target.value.toLowerCase()));
     generateFilterHtml(filtered, document.querySelector("#dropdownGreen"));
     
 })
 ustensilInput.addEventListener("change", e => {
 
-    let filtered = ustensilData.filter( i => i.includes(e.target.value));
+    let filtered = ustensilData.filter( i => i.toLowerCase().includes(e.target.value.toLowerCase()));
     generateFilterHtml(filtered, document.querySelector("#dropdownOrange"));
     
 })
