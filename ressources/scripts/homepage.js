@@ -59,6 +59,7 @@ function itemToBadge(element) {
     color = element.closest(".filter").className.split("--")[1];
     document.querySelector(".badgeContainer").insertAdjacentHTML("beforeend",`<span class="badge tag tag--${color}"><p class="badge__text">${element.innerHTML}</p><i class="far fa-times-circle badgeButton" onclick="deleteBadge(this)"></i></span>`);
     secondaryFilter(element.innerHTML);
+
 }
 //TODO APPLY FILTER AND REMOVE IT
 function secondaryFilter(filter) {
@@ -73,6 +74,7 @@ function secondaryFilter(filter) {
         return lowerCaseUstensils.indexOf(filter.toLowerCase()) !== -1 || recipe.appliance.toLowerCase().toLowerCase() == filter || ingredientMatch;
     })
     renderRecipe(filteredRecipes);
+    populateFilter(filteredRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
 }
 function deleteFilter() {
     let appliedFilter= [];
