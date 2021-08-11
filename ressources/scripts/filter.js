@@ -5,13 +5,18 @@ const ustensiles = document.querySelector("#Ustensils");
 
 //FILTER UI HANDLING
 let rotated = false;
-function filterDrop(element) {
+function filterDrop(element, data) {
     if(!rotated) {
         element.querySelector(".fa-chevron-down").style.transform = "rotate(180deg)";
         rotated = true;
         element.style.height = "auto";
         element.querySelector(".dropdown").style.display = "flex";
         element.querySelector(".dropdown").style.height = "auto";//400px
+        let divWidth = data.length / 12 * 130 + 80;
+        if(divWidth > 229){
+            element.querySelector(".dropdown").style.width = divWidth.toString()+"px";
+        }
+        else{element.querySelector(".dropdown").style.width = "100%";}
     }
     else {
         element.querySelector(".fa-chevron-down").style.transform = "rotate(0deg)";
@@ -21,9 +26,9 @@ function filterDrop(element) {
     }
 }
 //FILTER EVENT BINDING
-appareil.addEventListener( "click", () => {filterDrop(appareil)});
-ingredient.addEventListener( "click", () => {filterDrop(ingredient)});
-ustensiles.addEventListener( "click", () => {filterDrop(ustensiles)});
+appareil.addEventListener( "click", () => {filterDrop(appareil,appareilData)});
+ingredient.addEventListener( "click", () => {filterDrop(ingredient,ingredientData)});
+ustensiles.addEventListener( "click", () => {filterDrop(ustensiles,ustensilData)});
 
 let ingredientData = [];
 let appareilData = [];

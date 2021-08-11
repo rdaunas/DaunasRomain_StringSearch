@@ -12,6 +12,7 @@ renderRecipe(allRecipes);
 populateFilter(allRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
 
 
+
 //SEARCH EVENT HANDLING
 searchInput.addEventListener("change", (event) => {
 
