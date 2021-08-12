@@ -1,22 +1,14 @@
 
 let result = [];
-//second algorythm : check one by one to skip unecessary code; fix ingredient check
 function stringSearch(s , recipeArray) {
     result = recipeArray.filter( recipe => {
-
-        if(recipe.name.toLowerCase().indexOf(s.toLowerCase()) !== -1){
-            return true;
-        }
-        if(recipe.description.toLowerCase().indexOf(s.toLowerCase()) !== -1){
-            return true;
-        }
-        let ingredientMatch = false
-        recipe.ingredients.forEach( i => {            
+        let ingredientMatch = false;
+        recipe.ingredients.forEach( i => {
             if(i.ingredient.toLowerCase().indexOf(s.toLowerCase()) !== -1) {
                 ingredientMatch = true;
             }
-        }); 
-        return ingredientMatch;
+        });
+        return recipe.name.toLowerCase().indexOf(s.toLowerCase()) !== -1 || recipe.description.toLowerCase().indexOf(s.toLowerCase()) !== -1 ||  ingredientMatch; 
     });
     return result;
 }
