@@ -5,18 +5,14 @@ const ustensiles = document.querySelector("#Ustensils");
 
 //FILTER UI HANDLING
 let rotated = false;
-function filterDrop(element, data) {
+function filterDrop(element) {
     if(!rotated) {
         element.querySelector(".fa-chevron-down").style.transform = "rotate(180deg)";
         rotated = true;
         element.style.height = "auto";
         element.querySelector(".dropdown").style.display = "flex";
         element.querySelector(".dropdown").style.height = "auto";//400px
-        let divWidth = data.length / 12 * 130 + 80;
-        if(divWidth > 229){
-            element.querySelector(".dropdown").style.width = divWidth.toString()+"px";
-        }
-        else{element.querySelector(".dropdown").style.width = "100%";}
+        filterWidth(element);
     }
     else {
         element.querySelector(".fa-chevron-down").style.transform = "rotate(0deg)";
@@ -25,10 +21,18 @@ function filterDrop(element, data) {
         element.style.height = "50px";
     }
 }
+function filterWidth(element) {
+    let divWidth = element.querySelector(".dropdown").childElementCount / 12 * 130 + 80;
+        if(divWidth > 229){
+            element.querySelector(".dropdown").style.width = divWidth.toString()+"px";
+        }
+        else{element.querySelector(".dropdown").style.width = "100%";}
+}
+
 //FILTER EVENT BINDING
-appareil.addEventListener( "click", () => {filterDrop(appareil,appareilData)});
-ingredient.addEventListener( "click", () => {filterDrop(ingredient,ingredientData)});
-ustensiles.addEventListener( "click", () => {filterDrop(ustensiles,ustensilData)});
+appareil.addEventListener( "click", () => {filterDrop(appareil)});
+ingredient.addEventListener( "click", () => {filterDrop(ingredient)});
+ustensiles.addEventListener( "click", () => {filterDrop(ustensiles)});
 
 let ingredientData = [];
 let appareilData = [];
@@ -49,8 +53,8 @@ function populateFilter(recipeList, ingredientFilter, appareilFilter, ustensiles
         
         for( i of recipe.ingredients){
             noDuplicate(ingredientData, i.ingredient);
-         }         
-         noDuplicate(appareilData, recipe.appliance);
+        }         
+        noDuplicate(appareilData, recipe.appliance);
         for( ustensil of recipe.ustensils){
             noDuplicate(ustensilData,ustensil);
         }
@@ -81,22 +85,25 @@ const ustensilInput = document.querySelector("#ustensilInput");
 
 
 
-ingredientInput.addEventListener("change", e => {
+ingredientInput.addEventListener("keyup", e => {
 
     let filtered = ingredientData.filter( i => i.toLowerCase().includes(e.target.value.toLowerCase()));
     generateFilterHtml(filtered, document.querySelector("#dropdownBlue"));
+    filterWidth(e.target.closest(".filter"));
     
 })
-appareilInput.addEventListener("change", e => {
+appareilInput.addEventListener("keyup", e => {
 
     let filtered = appareilData.filter( i => i.toLowerCase().includes(e.target.value.toLowerCase()));
     generateFilterHtml(filtered, document.querySelector("#dropdownGreen"));
+    filterWidth(e.target.closest(".filter"));
     
 })
-ustensilInput.addEventListener("change", e => {
+ustensilInput.addEventListener("keyup", e => {
 
     let filtered = ustensilData.filter( i => i.toLowerCase().includes(e.target.value.toLowerCase()));
     generateFilterHtml(filtered, document.querySelector("#dropdownOrange"));
+    filterWidth(e.target.closest(".filter"));
     
 })
 

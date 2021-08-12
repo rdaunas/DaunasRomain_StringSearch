@@ -14,7 +14,7 @@ populateFilter(allRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
 
 
 //SEARCH EVENT HANDLING
-searchInput.addEventListener("change", (event) => {
+searchInput.addEventListener("keyup", (event) => {
 
     if( event.target.value.length >= 3) {
         searchedRecipes = stringSearch(event.target.value , allRecipes);

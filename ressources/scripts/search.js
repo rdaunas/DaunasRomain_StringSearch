@@ -1,16 +1,20 @@
 
 let result = [];
-//second algorythm : check one by one to skip unecessary code
-// IMPORTANT: check differet use case, filter THEN search, filter removal, reset from search etc
+//second algorythm : check one by one to skip unecessary code; fix ingredient check
 function stringSearch(s , recipeArray) {
     result = recipeArray.filter( recipe => {
-        let ingredientMatch = false;
+
+        if(recipe.name.toLowerCase().indexOf(s.toLowerCase()) !== -1){
+            return true;
+        }
+        if(recipe.description.toLowerCase().indexOf(s.toLowerCase()) !== -1){
+            return true;
+        }
         recipe.ingredients.forEach( i => {
             if(i.ingredient.toLowerCase().indexOf(s.toLowerCase()) !== -1) {
-                ingredientMatch = true;
+                return true;
             }
-        });
-        return recipe.name.toLowerCase().indexOf(s.toLowerCase()) !== -1 || recipe.description.toLowerCase().indexOf(s.toLowerCase()) !== -1 ||  ingredientMatch; 
+        }); 
     });
     return result;
 }
