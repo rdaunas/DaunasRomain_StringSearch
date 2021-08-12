@@ -6,8 +6,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   padding: 5px;
-  margin: 20px;
-  margin-left: 0px;
+  margin-bottom: 30px;
   background: #E7E7E7;
   text-overflow: ellipsis;
 }
@@ -93,6 +92,8 @@
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
 .badgeContainer {

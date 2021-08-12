@@ -1,6 +1,7 @@
 
 let result = [];
-
+//second algorythm : check one by one to skip unecessary code
+// IMPORTANT: check differet use case, filter THEN search, filter removal, reset from search etc
 function stringSearch(s , recipeArray) {
     result = recipeArray.filter( recipe => {
         let ingredientMatch = false;
