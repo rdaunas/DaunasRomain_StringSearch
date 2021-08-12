@@ -10,11 +10,13 @@ function stringSearch(s , recipeArray) {
         if(recipe.description.toLowerCase().indexOf(s.toLowerCase()) !== -1){
             return true;
         }
-        recipe.ingredients.forEach( i => {
+        let ingredientMatch = false
+        recipe.ingredients.forEach( i => {            
             if(i.ingredient.toLowerCase().indexOf(s.toLowerCase()) !== -1) {
-                return true;
+                ingredientMatch = true;
             }
         }); 
+        return ingredientMatch;
     });
     return result;
 }
