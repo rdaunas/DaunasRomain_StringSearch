@@ -26,7 +26,6 @@ searchInput.addEventListener("keyup", (event) => {
         populateFilter(searchedRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
     }
     else {
-        console.log("HEY");
         searchedRecipes = allRecipes;
         renderRecipe(allRecipes);
         populateFilter(allRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
