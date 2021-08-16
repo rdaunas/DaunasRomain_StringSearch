@@ -21,6 +21,7 @@ function filterDrop(element) {
         element.style.height = "50px";
     }
 }
+
 function filterWidth(element) {
     let divWidth = element.querySelector(".dropdown").childElementCount / 12 * 130 + 80;
         if(divWidth > 229){

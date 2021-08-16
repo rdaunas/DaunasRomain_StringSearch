@@ -15,6 +15,10 @@ populateFilter(allRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
 
 //SEARCH EVENT HANDLING
 searchInput.addEventListener("keyup", (event) => {
+    let badges = document.querySelectorAll(".badge");
+    for(badge of badges){
+        badge.remove();
+    }
 
     if( event.target.value.length >= 3) {
         searchedRecipes = stringSearch(event.target.value , allRecipes);
@@ -22,6 +26,8 @@ searchInput.addEventListener("keyup", (event) => {
         populateFilter(searchedRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
     }
     else {
+        console.log("HEY");
+        searchedRecipes = allRecipes;
         renderRecipe(allRecipes);
         populateFilter(allRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
     }
@@ -68,7 +74,7 @@ function itemToBadge(element) {
     secondaryFilter(element.innerHTML);
 
 }
-//TODO APPLY FILTER AND REMOVE IT
+
 function secondaryFilter(filter) {
     if( document.querySelectorAll(".badge__text").length > 1) {
         filteredRecipes = filterSearch(filter, filteredRecipes);
@@ -80,16 +86,15 @@ function secondaryFilter(filter) {
 }
 function deleteFilter() {
     let appliedFilter= [];
-    let array = [];
+    let array = allRecipes;
 
     for(filter of document.querySelectorAll(".badge__text")) { //get list of filter from html
         appliedFilter.push(filter.innerHTML);
     }
     for(filter of appliedFilter) {                                  //apply filter and push result into an array
-        array.push.apply(array,filterSearch(filter, allRecipes)); 
+       array = filterSearch(filter, array);
     }
-    if(array.length == 0) {                                         //if no filter, re render using array from search function
-        //searchedRecipes = stringSearch(searchInput.value , allRecipes);
+    if(appliedFilter.length == 0) {                                         //if no filter, re render using array from search function
         renderRecipe(searchedRecipes);
         populateFilter(searchedRecipes, ingredientFilter, appareilFilter, ustensilesFilter);
     }
