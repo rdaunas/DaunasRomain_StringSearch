@@ -1,5 +1,5 @@
-
 let result = [];
+
 function stringSearch(s , recipeArray) {
     result = recipeArray.filter( recipe => {
         let ingredientMatch = false;
