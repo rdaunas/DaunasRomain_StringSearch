@@ -1,16 +1,9 @@
 
 let result = [];
-function stringSearch(s , recipeArray) {
-    result = recipeArray.filter( recipe => {
-        let ingredientMatch = false;
-        recipe.ingredients.forEach( i => {
-            if(i.ingredient.toLowerCase().indexOf(s.toLowerCase()) !== -1) {
-                ingredientMatch = true;
-            }
-        });
-        return recipe.name.toLowerCase().indexOf(s.toLowerCase()) !== -1 || recipe.description.toLowerCase().indexOf(s.toLowerCase()) !== -1 ||  ingredientMatch; 
-    });
-    return result;
+function stringSearch(s , recipeArray) { 
+       
+            return recipeArray.filter((obj) => JSON.stringify(obj).toLowerCase().indexOf(s.toLowerCase()) !== -1);
+    
 }
 
 function filterSearch(s , recipeArray) {
