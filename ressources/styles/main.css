@@ -176,6 +176,9 @@
   cursor: pointer;
   width: 130px;
 }
+.dropdown--appareil {
+  max-width: 229px;
+}
 
 p {
   margin: 0;
