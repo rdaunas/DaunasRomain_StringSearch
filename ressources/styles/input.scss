@@ -66,11 +66,10 @@
     left: 0px;
     max-height: 400px;
     z-index: 8;
-    //width: 1000px;
+    align-content: flex-start;
 
     &__item {
         cursor: pointer;
-        margin: 2px;
         width: 130px;
     }
 }
