@@ -23,8 +23,8 @@ function filterDrop(element) {
 }
 
 function filterWidth(element) {
-    let divWidth = element.querySelector(".dropdown").childElementCount / 16 * 130 + 140;
-        if(divWidth > 229){
+    let divWidth = Math.ceil(element.querySelector(".dropdown").childElementCount / 16) * 130 + 10;
+        if(divWidth > document.querySelector(".filter").offsetWidth){
             element.querySelector(".dropdown").style.width = divWidth.toString()+"px";
         }
         else{element.querySelector(".dropdown").style.width = "100%";}
