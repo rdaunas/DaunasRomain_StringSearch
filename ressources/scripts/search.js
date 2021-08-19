@@ -2,7 +2,12 @@
 let result = [];
 function stringSearch(s , recipeArray) { 
        
-            return recipeArray.filter((obj) => JSON.stringify(obj).toLowerCase().indexOf(s.toLowerCase()) !== -1);
+            return recipeArray.filter((obj) => {                
+                let is;
+                obj.ingredients.forEach( i => is += i.ingredient);
+                let data = obj.name + obj.description + is;
+                 return data.toLowerCase().indexOf(s.toLowerCase()) !== -1;
+            });
     
 }
 
