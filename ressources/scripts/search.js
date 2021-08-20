@@ -1,17 +1,14 @@
 
 
-let result = [];
-function stringSearch(s , recipeArray) {
-    result = recipeArray.filter( recipe => {
-        let ingredientMatch = false;
-        recipe.ingredients.forEach( i => {
-            if(i.ingredient.toLowerCase().indexOf(s.toLowerCase()) !== -1) {
-                ingredientMatch = true;
-            }
-        });
-        return recipe.name.toLowerCase().indexOf(s.toLowerCase()) !== -1 || recipe.description.toLowerCase().indexOf(s.toLowerCase()) !== -1 ||  ingredientMatch; 
+function stringSearch(s , recipeArray) { 
+       
+    return recipeArray.filter((obj) => {                
+        let is;
+        obj.ingredients.forEach( i => is += i.ingredient);
+        let data = obj.name + obj.description + is;
+         return data.toLowerCase().indexOf(s.toLowerCase()) !== -1;
     });
-    return result;
+
 }
 
 function filterSearch(s , recipeArray) {
