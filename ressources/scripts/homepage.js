@@ -85,7 +85,7 @@ function secondaryFilter(filter) {
 }
 function deleteFilter() {
     let appliedFilter= [];
-    let array = allRecipes;
+    let array = searchedRecipes;
 
     for(filter of document.querySelectorAll(".badge__text")) { //get list of filter from html
         appliedFilter.push(filter.innerHTML);
